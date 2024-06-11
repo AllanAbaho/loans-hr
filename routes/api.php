@@ -14,7 +14,7 @@ Route::controller(AuthController::class)->group(function () {
 Route::middleware('auth:sanctum')->group(function () {
     Route::resource('organizations', OrganizationController::class);
     Route::resource('users', UserController::class);
-    Route::controller(MailController::class)->group(function () {
-        Route::post('send-mail', 'send');
-    });
+});
+Route::controller(MailController::class)->group(function () {
+    Route::post('send-mail', 'send');
 });
