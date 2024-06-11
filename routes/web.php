@@ -1,13 +1,15 @@
 <?php
 
+use App\Mail\NewUser;
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/mailable', function () {
-    $user = App\Models\User::find(1);
+    $user = User::find(1);
 
-    return new App\Mail\NewUser($user);
+    return new NewUser($user);
 });
