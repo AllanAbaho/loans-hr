@@ -20,4 +20,4 @@ Artisan::command('add:user', function () {
         'role' => 'Employee'
     ]);
     Log::info('Added new user ', ['name' => $name]);
-})->purpose('Add new user to organisation')->everyThreeMinutes();
+})->purpose('Add new user to organisation');
