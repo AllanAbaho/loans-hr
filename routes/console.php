@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\NewUserAdded;
 use App\Models\User;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
@@ -19,5 +20,7 @@ Artisan::command('add:user', function () {
         'organization_id' => 1,
         'role' => 'Employee'
     ]);
-    Log::info('Added new user ', ['name' => $name]);
+    $user = User::latest()->first();
+    // Log::info('Added new user ', ['name' => $name]);
+    event(new NewUserAdded($user));
 })->purpose('Add new user to organisation')->everyFiveMinutes();
